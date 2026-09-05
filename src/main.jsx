@@ -1,6 +1,6 @@
 import { StrictMode } from 'react' // 화면을 어떻게 그릴지 계산하는 담당
 import { createRoot } from 'react-dom/client' // 계산 결과를 실제 브라우저 DOM에 붙이는 담당
-import { ConfigProvider } from 'antd' // antd 컴포넌트 전체에 테마(색상 등)를 내려주는 provider
+import { ConfigProvider, App as AntdApp } from 'antd' // antd 컴포넌트 전체에 테마(색상 등)를 내려주는 provider
 import './index.css'
 import App from './App.jsx' // 최상위 컴포넌트
 /* main.jsx : 리액트 앱 전체를 실제 웹페이지(html)에 연결하는 단 하나의 지점! */
@@ -11,6 +11,10 @@ import App from './App.jsx' // 최상위 컴포넌트
 
   ConfigProvider : 앱 전체의 UI 설정을 한 곳에서 통일하는 컴포넌트, 이 선언된 곳 안의 모든 컴포넌트가 같은 테마/언어/전역 기본값 등의 공통설정을 물려받음
   (antd 컴포넌트들)
+
+  antd App (별칭 AntdApp) : message/notification/Modal 같은 static 함수가 ConfigProvider의 테마 컨텍스트를
+  못 읽어서 뜨는 "Static function can not consume context" 경고를 없애주는 컴포넌트.
+  이 안에서 App.useApp() 훅으로 꺼낸 message를 쓰면 테마가 정상 적용됨.
  */
 
 createRoot(document.getElementById('root')).render(
@@ -22,7 +26,9 @@ createRoot(document.getElementById('root')).render(
         },
       }}
     >
-      <App />
+      <AntdApp>
+        <App />
+      </AntdApp>
     </ConfigProvider>
   </StrictMode>,
 )

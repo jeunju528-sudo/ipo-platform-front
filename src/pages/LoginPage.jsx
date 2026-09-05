@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState } from 'react' // 컴포넌트가 값을 기억하게 해주는 도구
 import { useNavigate, Link } from 'react-router-dom'
 import { Form, Input, Button, Card, Typography, Alert, Row, Col } from 'antd'
 import axios from 'axios'
@@ -14,6 +14,7 @@ const { Title, Text, Paragraph } = Typography
 
 function LoginPage() {
   const navigate = useNavigate()
+  // useState로 만든 값은 리렌더링돼도 유지되고, 값이 바뀌면 React가 화면을 자동으로 다시 그려줌
   const [errorMessage, setErrorMessage] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -72,7 +73,7 @@ function LoginPage() {
           padding: '24px',
         }}
       >
-        <Card bordered={false} style={{ width: 360, boxShadow: 'none' }}>
+        <Card variant={false} style={{ width: 360, boxShadow: 'none' }}>
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <Title level={3} style={{ marginBottom: 4 }}>
               <span style={{ color: '#00C896' }}>IPO</span>Hub
