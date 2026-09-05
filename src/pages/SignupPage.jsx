@@ -96,7 +96,7 @@ function SignupPage() {
           padding: '24px',
         }}
       >
-        <Card variant={false} style={{ width: 360, boxShadow: 'none' }}>
+        <Card variant = {false} style={{ width: 360, boxShadow: 'none' }}>
           <div style={{ textAlign: 'center', marginBottom: 24 }}>
             <Title level={3} style={{ marginBottom: 4 }}>
               <span style={{ color: '#00C896' }}>IPO</span>Hub
